@@ -1,35 +1,92 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
+import useAuthStore from './store/authStore';
+import MainLayout from './layouts/MainLayout';
+import PublicLayout from './layouts/PublicLayout';
+import Login from './pages/Login';
+import Dashboard from './pages/Dashboard';
+import Landing from './pages/Landing';
+
+
+const ProtectedRoute = ({ children }) => {
+  const { isAuthenticated } = useAuthStore();
+  if (!isAuthenticated) {
+    return <Navigate to="/login" replace />;
+  } 
+  return children;
+};
+//hien thi sau khi login thanh cong
+const PublicRoute = ({ children }) => {
+  const { isAuthenticated } = useAuthStore();  
+  if (isAuthenticated) {
+    return <Navigate to="/dashboard" replace />;
+  }  
+  return children;
+};
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <Router>
+      <Toaster 
+        position="top-right"
+        toastOptions={{
+          duration: 4000,
+          style: {
+            background: '#363636',
+            color: '#fff',
+          },
+          success: {
+            style: {
+              background: '#10b981',
+            },
+          },
+          error: {
+            style: {
+              background: '#ef4444',
+            },
+          },
+        }}
+      />
+      
+      <Routes>
+        <Route element={<PublicLayout />}>
+          <Route path="/" element={<Landing />} />
+          <Route path="/services" element={<Landing />} />
+          <Route path="/stations" element={<Landing />} />
+          <Route path="/about" element={<Landing />} />
+          <Route path="/contact" element={<Landing />} />
+        </Route>
+        <Route 
+          path="/login" 
+          element={
+            <PublicRoute>
+              <Login />
+            </PublicRoute>
+          } 
+        />
+        <Route
+          path="/app"
+          element={
+            <ProtectedRoute>
+              <MainLayout />
+            </ProtectedRoute>
+          }
+        >
+          <Route index element={<Navigate to="/app/dashboard" replace />} />
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="vehicles" element={<div>Vehicles Page</div>} />
+          <Route path="services" element={<div>Services Page</div>} />
+          <Route path="my-bookings" element={<div>My Bookings Page</div>} />
+          <Route path="stations" element={<div>Stations Page</div>} />
+          <Route path="stations/map" element={<div>Stations Map Page</div>} />
+          <Route path="profile" element={<div>Profile Page</div>} />
+          <Route path="settings" element={<div>Settings Page</div>} />
+        </Route>
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </Router>
+  );
 }
 
 export default App
