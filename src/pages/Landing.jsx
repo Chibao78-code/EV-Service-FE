@@ -118,8 +118,8 @@ const Landing = () => {
                   <div className="flex items-center space-x-2">
                     <FiShield className="text-teal-600 text-xl" />
                     <div>
-                      <p className="text-xs text-gray-600">Chứng nhận</p>
-                      <p className="font-bold text-teal-700">ISO 9001</p>
+                      {/* <p className="text-xs text-gray-600">Chứng nhận</p> */}
+                      {/* <p className="font-bold text-teal-700">ISO 9001</p> */}
                     </div>
                   </div>
                 </div>
@@ -202,7 +202,7 @@ const Landing = () => {
               <div className="w-14 h-14 bg-teal-100 rounded-lg flex items-center justify-center mb-4">
                 <FiZap className="text-teal-600 text-2xl" />
               </div>
-              <h3 className="text-xl font-semibold mb-2">Sạc nhanh</h3>
+              <h3 className="text-xl font-semibold mb-2">Chăm Sóc</h3>
               <p className="text-gray-600 mb-4">
                 Hệ Thống Bảo Dưỡng Năng Suất, Chỉ 30 Phút Cho Kiểm Tra Toàn Diện
               </p>
