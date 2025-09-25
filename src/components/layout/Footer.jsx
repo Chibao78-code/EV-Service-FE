@@ -33,7 +33,7 @@ const Footer = () => {
               </a>
               <div className="flex items-start text-sm text-white/80">
                 <FiMapPin className="mr-2 mt-0.5 flex-shrink-0" />
-                123 Phố Đi Bộ, Quận 1, TP.HCM
+                123 Tòa Nhà Bitexco , Quận 1, TP.HCM
               </div>
             </div>
           </div>
@@ -76,7 +76,7 @@ const Footer = () => {
             <ul className="space-y-2">
               <li>
                 <Link to="/services/charging" className="text-sm text-white/80 hover:text-white transition-colors">
-                  Sạc xe điện
+                  Chăm Sóc Xe Điện
                 </Link>
               </li>
               <li>
