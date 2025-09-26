@@ -32,7 +32,7 @@ api.interceptors.response.use(
    // kiem tra loi token 
     if (response) {
       switch (response.status) {
-        //token het han, khong hop le
+        //token khong hop le
         case 401:
           localStorage.removeItem(STORAGE_KEYS.AUTH_TOKEN);
           localStorage.removeItem(STORAGE_KEYS.USER_DATA);
