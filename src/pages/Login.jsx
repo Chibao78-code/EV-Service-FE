@@ -118,19 +118,19 @@ const Login = () => {
               </div>
               <div className="relative flex justify-center text-sm">
                 <span className="px-2 bg-white text-gray-500">
-                  Hoặc
+                  {/* Hoặc */}
                 </span>
               </div>
             </div>
             
             <div className="mt-6 text-center">
               <p className="text-sm text-gray-600">
-                Bạn chưa có tài khoản?{' '}
+                {/* Bạn chưa có tài khoản?{' '} */}
                 <Link
                   to="/register"
                   className="font-medium text-primary-600 hover:text-primary-700"
                 >
-                  Đăng ký ngay
+                  {/* Đăng ký ngay */}
                 </Link>
               </p>
             </div>

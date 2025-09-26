@@ -60,7 +60,7 @@ const Landing = () => {
                 to="/register"
                 className="bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 transition-colors"
               >
-                Đăng ký
+                {/* Đăng ký */}
               </Link>
             </div>
           </div>
